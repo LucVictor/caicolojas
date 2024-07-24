@@ -127,7 +127,39 @@
             {% else %}
                 <h5 class="verde">Uso e consumo: {{  calcular_porcentagem( total_soma_avarias_usoeconsumo1, total_soma_avarias_usoeconsumo2)}}</h5>
             {% endif %}
+            <canvas id="myChart1"></canvas>
+
         </div>
         </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx1 = document.getElementById('myChart1');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ["Relatório 1" , "Relatório 2"],
+          datasets: [{
+            label: 'Custos',
+            data: {{ array_total | tojson }},
+              backgroundColor: "orange",
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false,
+                min:0,
+                ticks:{
+                  stepSize: 500
+                }
+
+            }
+          }
+        }
+      });
+</script>
     {% endif %}
 {% endblock %}

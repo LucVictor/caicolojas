@@ -171,7 +171,6 @@ def ultimo_dia_mes():
 
 @app.route('/')
 def index():
-    db.create_all()    
     start_date = primeiro_dia_mes()
     end_date = ultimo_dia_mes()
 

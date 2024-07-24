@@ -17,7 +17,6 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://lucascod_banco:88335938@192.95.54.248/lucascod_banco"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URL', 'mysql+pymysql://usuario:password@endereco/banco')
 app.config["SECRET_KEY"] = "secretkey"
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {

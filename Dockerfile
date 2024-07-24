@@ -1,5 +1,5 @@
 FROM python:3.9
-ENV SQLALCHEMY_DATABASE_URL="mysql+pymysql://root:caico123@caicomatriz-db.lucascoding.com.br/caico_ln"
+ENV SQLALCHEMY_DATABASE_URL="mysql+pymysql://usuario:senha@endereco/banco"
 COPY ./ /app
 WORKDIR /app
 RUN ls -a

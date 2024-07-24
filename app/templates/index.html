@@ -1,0 +1,99 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+    h3{
+        text-align: center  ;
+    }
+    .resumoavarias{
+        margin-left: 30px;
+    }
+    footer{
+        margin-top: 50px;
+    }
+</style>
+<div>
+<div class="resumo">
+
+<div class="resumoavarias">
+
+    <h3>Produtos Próximos ao Vencimento</h3>
+    <table class="dez_itens">
+        <tr>
+            <th>Produto</th>
+            <th>Quant</th>
+            <th>Vencimento</th>
+        </tr>
+        {% for i in dez_vencimentos %}
+        <tr>
+            <td>{{ i.nome_do_produto }}</td>
+            <td>{{ i.quantidade }}</td>
+            <td>{{  i.data_de_vencimento.strftime('%d/%m/%Y') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="resumoavarias">
+<h3>Gráfico de custos</h3>
+<canvas id="myChart2"></canvas>
+    <h3>Últimas avarias</h3>
+    <table class="dez_itens">
+        <tr>
+            <th>Código</th>
+            <th>Custo</th>
+        </tr>
+        {% for i in dez_itens %}
+        <tr>
+            <td>{{ i.nome_do_produto }}</td>
+            <td>R${{  i.preco_total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{ dates | tojson }},
+      datasets: [{
+        label: 'R$',
+        data: {{ total_values | tojson }},
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+
+new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: {{ dates | tojson }},
+      datasets: [{
+        label: 'R$',
+        data: {{ total_values | tojson }},
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+{% endblock %}

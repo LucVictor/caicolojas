@@ -1,0 +1,45 @@
+{% extends "./template.html" %}
+{% block content %}
+    <h2>Listagem de vencimentos de produtos</h2>
+    <table>
+  <tr>
+      <th>Código</th>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Dias Restantes</th>
+      <th>Vendas Mês</th>
+      <th>Volume Venda</th>
+      <th>Prob. Vencidas</th>
+  </tr>
+
+   {% for dados in dados %}
+  <tr>
+      <td> {{ dados.codigo_do_produto }}</td>
+    <td> {{ dados.nome_do_produto }}</td>
+    <td> {{ dados.quantidade | int}}</td>
+    <td> {{ dados.dias_restantes }}</td>
+    <td>{{ dados.media_mensal }}</td>
+
+    {% if dados.media_diaria == 0 %}
+        <td class="vermelho">Negativo</td>
+    {% else %}
+        {% if dados.quantidade / dados.media_diaria > dados.dias_restantes  %}
+             <td class="vermelho">Negativo</td>
+        {% else %}
+            <td class="verde">Positivo</td>
+        {% endif %}
+    {% endif %}
+      {% if dados.media_diaria == 0 %}
+        <td>{{ dados.quantidade| int }}</td>
+    {% else %}
+             {%  if dados.quantidade - (dados.media_diaria * dados.dias_restantes) < 0 %}
+                 <td>0</td>
+             {% else %}
+                 <td>{{ (dados.quantidade - (dados.media_diaria * dados.dias_restantes)) | int}}</td>
+             {% endif %}
+ {% endif %}
+  </tr>
+
+        {% endfor %}
+</table>
+{% endblock %}

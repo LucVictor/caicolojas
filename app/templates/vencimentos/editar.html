@@ -1,0 +1,17 @@
+{% extends "./template.html" %}
+{% block content %}
+     <div class="cadastrar_produto">
+    <h2>Formulário de Avaria</h2>
+    <form action="/vencimentos/editar/{{ vencimento.id }}" method="post">
+        <label for="codigo_produto">Código do Produto:</label><br>
+        <input type="number" id="codigo_produto" name="codigo_produto" value="{{ vencimento.codigo_do_produto }}" readonly required><br><br>
+
+        <label for="nome_produto">Nome do Produto:</label><br>
+        <input type="text" id="nome_produto" name="nome_produto" minlength="600" value="{{ vencimento.nome_do_produto }}" readonly required ><br><br>
+
+        <label for="quantidade">Quantidade: </label><br>
+        <input type="number" id="quantidade" name="quantidade" step="0.1" value="{{ vencimento.quantidade }}" required><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+     </div>
+{% endblock %}

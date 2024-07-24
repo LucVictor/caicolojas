@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<style>
+    .iconegithub{
+         mix-blend-mode: multiply;
+}
+    .divlogin{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    }
+    .box {
+    border-radius: 20px;
+        background: orange;
+    width: 200px;
+    height: fit-content;
+        padding: 20px 20px;
+        display: grid ;
+        text-align: center;
+        justify-content: center;
+    align-items: center;
+            -webkit-box-shadow: 0px 1px 32px 2px rgba(0,0,0,0.79);
+box-shadow: 0px 1px 32px 2px rgba(0,0,0,0.79);
+    }
+body {
+margin: 0px;
+    background: #ff5515;
+}
+
+.logo{
+    padding-top: 4px;
+     mix-blend-mode: multiply;}
+html{
+        background: rgba(255, 165, 0, 0.16);
+        font-family: 'Poppins', sans-serif;
+}
+
+input{
+    text-align: center;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.logar{
+    width: fit-content;
+    border-style: unset;
+    border-radius: 2px;
+    background: #ff5515;
+}
+.logar:hover{
+    transform: scale(1.20);
+}
+.footer{
+    text-align: center;
+    padding: 5px;
+    margin-top: 20px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    font-size: small;
+
+}
+
+</style>
+
+<body>
+<div class="divlogin"><div class="box">
+    <div class="logo"><h1><img src="../static/imagens/logo.png" width="80"></h1></div>
+    <div>
+        <form action="/logar" method="post"><br>
+      <label for="username">Usuário:</label><br><br>
+      <input type="text" name="username" /><br><br>
+      <label for="password">Senha:</label><br><br>
+      <input type="password" name="password" /><br><br>
+      <button type="submit" class="logar">Logar</button>
+    </form></div><br><br>
+    <div class="footer"><div>
+     <div><span>Mantido por @LucVictor</span></div>
+        <div><a href="https://github.com/LucVictor" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" class="iconegithub" alt="GitHub" width="30" height="30">
+        </a></div></div></div>
+</div>
+</div>
+
+
+</body>
+
+</html>

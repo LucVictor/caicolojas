@@ -1,0 +1,58 @@
+{% extends "./template.html" %}
+{% block content %}
+<style>
+table{
+    font-size: small;
+}
+    @media print {
+    table{
+        font-size: 10px;
+        margin-bottom: 200px;
+        width: 100vh;
+        padding: 1px 1px 1px;
+    }
+        th, tr, td{
+            padding: 1px 1px 1px;
+            width: fit-content;
+        }
+
+}
+</style>
+
+    <h2>Listagem de vencimentos de produtos</h2>
+    <table>
+  <tr>
+      <th>Código</th>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Vencimento</th>
+      <th>Dias</th>
+      {% if current_user.is_authenticated %}
+      <th class="botoesacao">Ação</th>
+      {% endif %}
+      <th class="botoesacao">Usuário</th>
+
+  </tr>
+   {% for vencimento in vencimentos %}
+  <tr>
+    <td>{{ vencimento.codigo_do_produto }}</td>
+    <td>{{ vencimento.nome_do_produto }}</td>
+    <td>{{ vencimento.quantidade | format_quantidade }}
+    </td>
+    <td>{{ vencimento.data_de_vencimento.strftime('%d/%m/%Y') }}</td>
+    <td class="{% if vencimento.dias_restantes <= 15 %}vermelho{% endif %}
+                {% if vencimento.dias_restantes > 15 <=30 %}amarelo{% endif %}
+                {% if vencimento.dias_restantes > 30 %}verde{% endif %}">{{ vencimento.dias_restantes }}</td>
+    {% if current_user.is_authenticated %}
+        <td class="botoesacao"><form action="/vencimentos/editar/{{ vencimento.id }}" method="get">
+        <input type="submit" value="Editar">
+        </form>
+        <form action="/vencimentos/deletar/{{ vencimento.id }}" method="post">
+        <input type="submit" value="Apagar">
+        </form></td>
+    {% endif %}
+    <td class="botoesacao">{{ vencimento.criador }}</td>
+  </tr>
+        {% endfor %}
+</table>
+{% endblock %}

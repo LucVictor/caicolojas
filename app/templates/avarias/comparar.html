@@ -1,0 +1,133 @@
+{% extends "./template.html" %}
+{% block content %}
+<style>
+    @media print{
+        .resumo{
+            font-size: 12px;
+        }
+    }
+.resumo{
+    font-size: small;
+}
+    h3,h2{
+        text-align: center  ;
+    }
+    .resumoavarias{
+        margin-left: 30px;
+    }
+    .vermelhocusto{
+        width: fit-content;
+        margin-top: 2px;
+        padding: 2px;
+        background-color: rgb(251, 73, 73);
+        margin: auto;
+    }
+    .verdecusto{
+        width: fit-content;
+        background: green;
+        margin-top: 2px;
+        margin: auto;
+        padding: 2px;
+    }
+    .vermelho, .verde{
+        width: fit-content;
+        margin-top: 2px;
+        padding: 2px;
+    }
+
+    </style>
+        {% if not total_soma_avarias1 %}
+        <div class="cadastrar_produto">
+    <h2>Comparar Relatórios</h2>
+    <form action="/avarias/comparar" method="post">
+        <h4>Primeiro relatório</h4>
+        <label for="data_inicial1">Data inicial:</label><br>
+        <input type="date" id="data_inicial1" name="data_inicial1" required><br><br>
+
+        <label for="data_final1">Data final</label><br>
+        <input type="date" id="data_final1" name="data_final1" required><br><br>
+
+         <h4>Segundo relatório</h4>
+        <label for="data_inicial2">Data inicial:</label><br>
+        <input type="date" id="data_inicial2" name="data_inicial2" required><br><br>
+
+        <label for="data_final2">Data final</label><br>
+        <input type="date" id="data_final2" name="data_final2" required><br><br>
+        <input type="submit" value="Emitir">
+    </form>
+        </div>
+    {% endif %}
+    {% if total_soma_avarias1 %}
+        <h1>Comparação de relatórios de avarias</h1>
+        <div class="resumo">
+
+        <div class="resumoavarias">
+        <h2>Relatório 1</h2>
+        <h2>Relatório de {{ data_inicial1.strftime('%d/%m/%Y') }} à {{ data_final1.strftime('%d/%m/%Y') }}</h2>
+        <h3>Custos:</h3>
+        <h4>Custos de avarias: R${{ total_soma_avarias1 }} </h4>
+        <h4>Quantidade de itens: {{ (avarias_quantidade1) | round_quantity }}</h4>
+        <h4>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias1 / avarias_quantidade1) }} </h4>
+            <h3>Descrição de custos:</h3>
+        <h5>Custos avarias por embalagem: R${{ total_soma_avarias_embalagem1 }} </h5>
+        <h5>Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento1 }} </h5>
+        <h5>Custos de avarias estragadas: R${{ total_soma_avarias_estragado1 }} </h5>
+        <h5>Custo de uso e consumo: R${{ total_soma_avarias_usoeconsumo1 }} </h5>
+
+        </div>
+        <div class="resumoavarias">
+        <h2>Relatório 2</h2>
+        <h2>Relatório de {{ data_inicial2.strftime('%d/%m/%Y') }} à {{ data_final2.strftime('%d/%m/%Y') }}</h2>
+        <h3>Custos:</h3>
+        <h4>Custos de avarias: R${{ total_soma_avarias2 }} </h4>
+        <h4>Quantidade de itens: {{ (avarias_quantidade2) | round_quantity }}</h4>
+        <h4>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias2 / avarias_quantidade2) }} </h4>
+        <h3>Descrição de custos:</h3>
+        <h5>Custos avarias por embalagem: R${{ total_soma_avarias_embalagem2 }} </h5>
+        <h5>Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento2 }} </h5>
+        <h5>Custos de avarias estragadas: R${{ total_soma_avarias_estragado2 }} </h5>
+        <h5>Custo de uso e consumo: R${{ total_soma_avarias_usoeconsumo2 }} </h5>
+        </div>
+        <div class="resumoavarias">
+        <h2>Comparação</h2>
+
+        <h3>Custos:</h3>
+            {% if total_soma_avarias1 < total_soma_avarias2 %}
+                <h4 class="vermelhocusto">Aumentou: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h4>
+            {% else %}
+                <h4 class="verdecusto">Reduziu: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h4>
+            {% endif %}
+
+
+
+        <h3>Descrição de custos:</h3>
+
+            {% if total_soma_avarias_embalagem1 < total_soma_avarias_embalagem2 %}
+                <h5 class="vermelho">Avarias por embalagem: {{ calcular_porcentagem(total_soma_avarias_embalagem1, total_soma_avarias_embalagem2) }}</h5>
+            {% else %}
+                <h5 class="verde">Avarias por embalagem: {{ calcular_porcentagem(total_soma_avarias_embalagem1, total_soma_avarias_embalagem2) }}</h5>
+            {% endif %}
+
+
+            {% if total_soma_avarias_vencimento1 < total_soma_avarias_vencimento2 %}
+                <h5 class="vermelho">Avarias por vencimento: {{ calcular_porcentagem(total_soma_avarias_vencimento1, total_soma_avarias_vencimento2)}}</h5>
+            {% else %}
+                 <h5 class="verde">Avarias por vencimento: {{  calcular_porcentagem(total_soma_avarias_vencimento1, total_soma_avarias_vencimento2) }}</h5>
+            {% endif %}
+
+
+            {% if total_soma_avarias_estragado1 < total_soma_avarias_estragado2 %}
+                <h5 class="vermelho">Avarias estragadas: {{ calcular_porcentagem(total_soma_avarias_estragado1,total_soma_avarias_estragado2)}} </h5>
+            {% else %}
+                <h5 class="verde">Avarias estragadas: {{ calcular_porcentagem(total_soma_avarias_estragado1,total_soma_avarias_estragado2) }}</h5>
+            {% endif %}
+
+            {% if total_soma_avarias_usoeconsumo1 < total_soma_avarias_usoeconsumo2 >0 %}
+                <h5 class="vermelho">Uso e consumo: {{ calcular_porcentagem( total_soma_avarias_usoeconsumo1, total_soma_avarias_usoeconsumo2) }}</h5>
+            {% else %}
+                <h5 class="verde">Uso e consumo: {{  calcular_porcentagem( total_soma_avarias_usoeconsumo1, total_soma_avarias_usoeconsumo2)}}</h5>
+            {% endif %}
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}

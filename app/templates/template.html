@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Caicó Frios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="icon" type="image/x-icon" href="https://caico.lucascoding.com.br/static/imagens/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="menu">
+    <div class="logo"><img src="{{ url_for('static', filename='imagens/logo.png') }}" width="40"></div>
+    <div class="botoesmenu">{% if current_user.is_authenticated %}
+    <div class="botaoavarias">Avarias
+        <div class="botaoavariasconteudo">
+            <a href="/avarias/" class="linkbotoes">Visualizar</a>
+
+            <a href="/avarias/procurar" class="linkbotoes">Cadastrar</a>
+            <a href="/avarias/relatorio" class="linkbotoes">Relatório</a>
+            <a href="/avarias/comparar" class="linkbotoes">Comparar</a>
+
+        </div>
+    </div>{% endif %}
+        <div class="botaovecimentos">Vencimentos
+        <div class="botaovecimentosconteudo">
+            <a  href="/vencimentos/" class="linkbotoes">Visualizar</a>
+            {% if current_user.is_authenticated %}
+            <a  href="/vencimentos/procurar" class="linkbotoes">Cadastrar</a>
+            <a  href="/vencimentos/analisarvolume" class="linkbotoes">Analisar</a>
+            <a  href="/vencimentos/cadastrar_volume" class="linkbotoes">Cadastrar Volume</a>
+            {% endif %}
+
+        </div>
+    </div>
+    </div>
+    </div>
+<div class="conteudo">{% block content %}{% endblock %}</div>
+
+</body>
+    <footer><div>
+        <div><span>Mantido por @LucVictor</span></div>
+        <div><a href="https://github.com/LucVictor" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" class="iconegithub" alt="GitHub" width="30" height="30">
+        </a></div></div>
+    </footer>
+</html>

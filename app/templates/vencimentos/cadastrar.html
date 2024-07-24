@@ -1,0 +1,22 @@
+{% extends "./template.html" %}
+{% block content %}
+    <div class="cadastrar_produto">
+    <h2>Formulário de Avaria</h2>
+    <img class="procurarimg" src="../static/imagens/cadastrar.png" width="80" alt=""><br>
+    <form action="/vencimentos/cadastro" method="post">
+        <label for="codigo_produto">Código do Produto:</label><br>
+        <input type="number" id="codigo_produto" name="codigo_produto" value="{{ produto.codigo_do_produto }}" required><br><br>
+
+        <label for="nome_produto">Nome do Produto:</label><br>
+        <input type="text" id="nome_produto" name="nome_produto" minlength="600" value="{{ produto.nome_do_produto }}" required ><br><br>
+
+        <label for="quantidade">Quantidade: </label><br>
+        <input type="number" id="quantidade" name="quantidade" step="0.001" min="0" value="0" required><br><br>
+
+        <label for="data_vencimento">Data de Vencimento:</label><br>
+        <input type="date" id="data_vencimento" name="data_vencimento" required><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+    <div>
+{% endblock %}

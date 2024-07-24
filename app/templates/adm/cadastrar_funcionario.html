@@ -1,0 +1,24 @@
+{% extends "./template.html" %}
+{% block content %}
+
+    <div class="procurarproduto">
+    <h2 class="vermelho">{{ erro }}</h2>
+    <h2 class="verde">{{ sucesso }}</h2>
+    <h2>Cadastrar Funcionário</h2>
+    <form action="/adm/cadastrar_funcionario" method="post">
+        <label for="nome">Nome do funcionário:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="funcao">Função:</label><br>
+       <select id="funcao" name="funcao" required>
+            <option class="opcao" value="Motorista">Motorista</option>
+            <option class="opcao" value="Ajudante">Ajudante</option>
+           <option  class="opcao" value="Conferente">Conferente</option>
+           <option class="opcao" value="Vendedor">Vendedor</option>
+           <option class="opcao" value="Faturista">Faturista</option>
+        </select>
+            <br><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+    <div>
+{% endblock %}

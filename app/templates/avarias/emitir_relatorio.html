@@ -1,0 +1,91 @@
+{% extends "./template.html" %}
+{% block content %}
+    <style>
+    .h5{
+        font-size: 12px;
+
+    }
+    @media print {
+    .resumo{
+        margin-bottom: 200px;
+    }
+
+}
+    h3{
+        text-align: center;
+    }
+
+    </style>
+    <h2>Relatório de Avarias</h2>
+    <h3>Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') + " à " + data_final.strftime('%d/%m/%Y') }}</h3><br>
+    <div class="resumo">
+    <div class="resumoavarias">
+    <h3>Custos:</h3>
+    <h4>Custos de avarias: R${{ total_soma_avarias - total_soma_avarias_usoeconsumo }} </h4>
+    <h4>Uso e consumo: R${{ total_soma_avarias_usoeconsumo }} </h4>
+    <h4>Total: R${{ total_soma_avarias }} </h4>
+    <h4>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias / avarias_quantidade) }} </h4>
+    </div><br>
+    <div class="resumoavarias">
+            <h3>Descrição de custos:</h3>
+    <h5>Custos de avarias por embalagem: R${{ total_soma_avarias_embalagem }} </h5>
+    <h5>Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento }} </h5>
+    <h5>Custos de avarias estragadas: R${{ total_soma_avarias_estragado }} </h5>
+    <h5>Custos de uso e consumo: R${{ total_soma_avarias_usoeconsumo }} </h5>
+    </div><br>
+    <div class="resumoavarias">
+     <h3>Descrição de itens:</h3>
+    <h5>Quantidade de embalagem: {{ avarias_embalagem_quantidade |int }}</h5>
+    <h5>Quantidade de vencidos: {{ avarias_vencidos_quantidade |int }}</h5>
+    <h5>Quantidade de estragados: {{ avarias_estragados_quantidade |int }}</h5>
+    </div>
+    <div class="resumoavarias">
+        <h3>10 maiores custos</h3>
+    <table class="dez_itens">
+        <tr>
+            <th>Código</th>
+            <th>Custo</th>
+        </tr>
+        {% for i in dez_itens %}
+        <tr>
+            <td>{{ i.codigo_do_produto }}</td>
+                <td>R${{  i.preco_total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+    <table class="tabelaavarias">
+  <tr>
+      <th>Data</th>
+    <th>Código</th>
+    <th>Produto</th>
+    <th>Quantidade</th>
+    <th>Custo</th>
+    <th>Tipo de Avaria</th>
+    <th>Uso e consumo?</th>
+      <th>Usuário</th>
+      <th class="botoesacao">Ação</th>
+  </tr>
+   {% for resultado in resultado %}
+  <tr>
+   <td>{{ resultado.data_de_insercao.strftime('%d/%m/%Y') }}</td>
+    <td>{{ resultado.codigo_do_produto }}</td>
+    <td>{{ resultado.nome_do_produto }}</td>
+    <td>{{ resultado.quantidade | format_quantidade}}</td>
+    <td>R$ {{ resultado.preco_total }}</td>
+    <td>{{ resultado.tipodeavaria }}</td>
+    <td>{{ resultado.usoeconsumo }}</td>
+    <td>{{ resultado.criador }}</td>
+    <td class="botoesacao"><form action="/avarias/deletar/{{ resultado.id }}" method="post">
+    <input type="submit" value="Apagar"></form>
+    </td>
+  </tr>
+
+        {% endfor %}
+</table>
+{% endblock %}

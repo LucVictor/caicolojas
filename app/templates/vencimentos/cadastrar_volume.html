@@ -1,0 +1,18 @@
+{% extends "./template.html" %}
+{% block content %}
+    <div class="cadastrar_produto">
+    <h2>Cadastro de Volume de Vendas</h2>
+    <img class="procurarimg" src="../static/imagens/cadastrar.png" width="80" alt=""><br>
+    <form action="/vencimentos/cadastrar_volume" method="post">
+        <label for="codigo_produto">Código do Produto:</label><br>
+        <input type="number" id="codigo_produto" name="codigo_produto" value=""  required><br><br>
+
+
+        <label for="media_saida">Média de saída por mês: </label><br>
+        <input type="number" id="media_saida" name="media_saida" step="0.1" value="0" required><br><br>
+
+
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}

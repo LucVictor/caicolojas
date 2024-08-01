@@ -1,106 +1,75 @@
 {% extends "./template.html" %}
 {% block content %}
-<style>
-    @media print{
-        .resumo{
-            font-size: 12px;
-        }
-    }
-.resumo{
-    font-size: small;
-}
-    h3,h2{
-        text-align: center  ;
-    }
-    .resumoavarias{
-        margin-left: 30px;
-    }
-    .vermelhocusto{
-        width: fit-content;
-        margin-top: 2px;
-        padding: 2px;
-        background-color: rgb(251, 73, 73);
-        margin: auto;
-    }
-    .verdecusto{
-        width: fit-content;
-        background: green;
-        margin-top: 2px;
-        margin: auto;
-        padding: 2px;
-    }
-    .vermelho, .verde{
-        width: fit-content;
-        margin-top: 2px;
-        padding: 2px;
-    }
 
-    </style>
         {% if not total_soma_avarias1 %}
-        <div class="cadastrar_produto">
-    <h2>Comparar Relatórios</h2>
-    <form action="/avarias/comparar" method="post">
-        <h4>Primeiro relatório</h4>
-        <label for="data_inicial1">Data inicial:</label><br>
-        <input type="date" id="data_inicial1" name="data_inicial1" required><br><br>
+    <div class="shadow text-black p-1 m-auto border-orange w-25">
+    <h3>Comparar Relatórios</h3>
 
-        <label for="data_final1">Data final</label><br>
-        <input type="date" id="data_final1" name="data_final1" required><br><br>
+        <form class="w-50 mt-2 m-auto" action="/avarias/comparar" method="post">
+        <div class="mt-4">
+        <h5>Primeiro relatório</h5>
+        <label class="m-1" for="data_inicial1">Data inicial:</label>
+        <input class="form-control text-center " type="date" id="data_inicial1" name="data_inicial1" required>
 
-         <h4>Segundo relatório</h4>
-        <label for="data_inicial2">Data inicial:</label><br>
-        <input type="date" id="data_inicial2" name="data_inicial2" required><br><br>
+        <label class="m-2" for="data_final1">Data final</label>
+        <input class="mb-2 form-control text-center" type="date" id="data_final1" name="data_final1" required>
+        </div>
 
-        <label for="data_final2">Data final</label><br>
-        <input type="date" id="data_final2" name="data_final2" required><br><br>
-        <input type="submit" value="Emitir">
+        <div class="mt-4">
+        <h5>Segundo relatório</h5>
+        <label class="mt-1" for="data_inicial2">Data inicial:</label>
+        <input class="form-control text-center" type="date" id="data_inicial2" name="data_inicial2" required>
+
+        <label class="m-2" for="data_final2">Data final</label>
+        <input class="mb-2 form-control text-center" type="date" id="data_final2" name="data_final2" required>
+        <input class="btn btn-warning m-2" type="submit" value="Emitir"></div>
     </form>
         </div>
     {% endif %}
     {% if total_soma_avarias1 %}
-        <h1>Comparação de relatórios de avarias</h1>
-        <div class="resumo">
+        <h2>Comparação de relatórios de avarias</h2>
+        <div class="d-flex justify-content-center text-center">
 
-        <div class="resumoavarias">
-        <h2>Relatório 1</h2>
-        <h2>Relatório de {{ data_inicial1.strftime('%d/%m/%Y') }} à {{ data_final1.strftime('%d/%m/%Y') }}</h2>
-        <h3>Custos:</h3>
-        <h4>Custos de avarias: R${{ total_soma_avarias1 }} </h4>
-        <h4>Quantidade de itens: {{ (avarias_quantidade1) | round_quantity }}</h4>
-        <h4>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias1 / avarias_quantidade1) }} </h4>
-            <h3>Descrição de custos:</h3>
+        <div class="border-orange shadow m-3 p-2 h-50">
+        <h3>Relatório 1</h3>
+        <h3>Relatório de {{ data_inicial1.strftime('%d/%m/%Y') }} à {{ data_final1.strftime('%d/%m/%Y') }}</h3>
+        <h4>Custos:</h4>
+        <h5>Custos de avarias: R${{ total_soma_avarias1 }} </h5>
+        <h5>Quantidade de itens: {{ (avarias_quantidade1) | round_quantity }}</h5>
+        <h5>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias1 / avarias_quantidade1) }} </h5>
+            <h4>Descrição de custos:</h4>
         <h5>Custos avarias por embalagem: R${{ total_soma_avarias_embalagem1 }} </h5>
         <h5>Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento1 }} </h5>
         <h5>Custos de avarias estragadas: R${{ total_soma_avarias_estragado1 }} </h5>
         <h5>Custo de uso e consumo: R${{ total_soma_avarias_usoeconsumo1 }} </h5>
 
         </div>
-        <div class="resumoavarias">
-        <h2>Relatório 2</h2>
-        <h2>Relatório de {{ data_inicial2.strftime('%d/%m/%Y') }} à {{ data_final2.strftime('%d/%m/%Y') }}</h2>
-        <h3>Custos:</h3>
-        <h4>Custos de avarias: R${{ total_soma_avarias2 }} </h4>
-        <h4>Quantidade de itens: {{ (avarias_quantidade2) | round_quantity }}</h4>
-        <h4>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias2 / avarias_quantidade2) }} </h4>
-        <h3>Descrição de custos:</h3>
+        <div class="shadow border-orange  m-3 p-2 h-50">
+        <h3>Relatório 2</h3>
+        <h3>Relatório de {{ data_inicial2.strftime('%d/%m/%Y') }} à {{ data_final2.strftime('%d/%m/%Y') }}</h3>
+        <h4>Custos:</h4>
+        <h5>Custos de avarias: R${{ total_soma_avarias2 }} </h5>
+        <h5>Quantidade de itens: {{ (avarias_quantidade2) | round_quantity }}</h5>
+        <h5>Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias2 / avarias_quantidade2) }} </h5>
+        <h4>Descrição de custos:</h4>
         <h5>Custos avarias por embalagem: R${{ total_soma_avarias_embalagem2 }} </h5>
         <h5>Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento2 }} </h5>
         <h5>Custos de avarias estragadas: R${{ total_soma_avarias_estragado2 }} </h5>
         <h5>Custo de uso e consumo: R${{ total_soma_avarias_usoeconsumo2 }} </h5>
         </div>
-        <div class="resumoavarias">
-        <h2>Comparação</h2>
+        <div class="shadow border-orange  m-3 p-2 h-50 fs-12">
+        <h3>Comparação</h3>
 
-        <h3>Custos:</h3>
+        <h4>Custos:</h4>
             {% if total_soma_avarias1 < total_soma_avarias2 %}
-                <h4 class="vermelhocusto">Aumentou: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h4>
+                <h5 class="vermelhocusto">Aumentou: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h5>
             {% else %}
-                <h4 class="verdecusto">Reduziu: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h4>
+                <h5 class="verdecusto">Reduziu: {{ calcular_porcentagem(total_soma_avarias1, total_soma_avarias2) }}</h5>
             {% endif %}
 
 
 
-        <h3>Descrição de custos:</h3>
+        <h4>Descrição de custos:</h4>
 
             {% if total_soma_avarias_embalagem1 < total_soma_avarias_embalagem2 %}
                 <h5 class="vermelho">Avarias por embalagem: {{ calcular_porcentagem(total_soma_avarias_embalagem1, total_soma_avarias_embalagem2) }}</h5>
@@ -126,7 +95,7 @@
                 <h5 class="vermelho">Uso e consumo: {{ calcular_porcentagem( total_soma_avarias_usoeconsumo1, total_soma_avarias_usoeconsumo2) }}</h5>
             {% else %}
                 <h5 class="verde">Uso e consumo: {{  calcular_porcentagem( total_soma_avarias_usoeconsumo1, total_soma_avarias_usoeconsumo2)}}</h5>
-            {% endif %}
+            {% endif %}<br>
             <canvas id="myChart1"></canvas>
 
         </div>

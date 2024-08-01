@@ -1,24 +1,26 @@
 {% extends "template.html" %}
 {% block content %}
-    <h1>Cadastrar Usuário</h1>
-    <form action="/adm/cadastrar_usuario" method="post">
-      <label for="username">Usuário:</label><br>
-      <input type="text" name="username" /><br>
-      <label for="password">Senha:</label><br>
-      <input type="password" name="password" /><br>
-      <label>Filial:</label><br>
-      <select id="filial" name="filial">
+    <div class="text-black p-1 m-auto border-orange fs-5 w-25">
+    <h2>Cadastrar Usuário</h2>
+    <form class="w-75 m-auto" action="/adm/cadastrar_usuario" method="post">
+        <div class="form-group mb-3 m-auto">
+      <label for="username">Usuário:</label>
+      <input  class="form-control text-center w-50 m-auto" type="text" name="username" /></div>
+      <div class="form-group mb-3 m-auto"><label for="password">Senha:</label>
+          <input  class="form-control text-center w-50 m-auto" type="password" name="password" /></div>
+      <div class="form-group mb-3 m-auto"><label>Filial:</label>
+      <select class="form-select text-center w-50 m-auto" id="filial" name="filial">
         <option>Matriz</option>
          <option>Zona Norte</option>
           <option>Lagoa Nova</option>
           <option>Parnamirim</option>
-        </select><br><br>
-        <label>Nível</label>
-        <select id="acesso" name="acesso">
+      </select></div>
+        <div class="form-group mb-3 m-auto"><label>Nível</label>
+        <select class="form-select text-center w-50 m-auto" id="acesso" name="acesso">
         <option>1</option>
          <option>2</option>
           <option>3</option>
-        </select><br><br>
-      <button type="submit">Cadastrar</button>
-    </form>
+        </select></div>
+      <button class="btn btn-warning mb-1" type="submit">Cadastrar</button>
+    </form></div>
 {% endblock %}

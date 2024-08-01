@@ -1,38 +1,38 @@
 {% extends "./template.html" %}
 {% block content %}
-    <div class="cadastrar_produto">
-    <h2>Formulário de Avaria</h2>
-    <img class="procurarimg" src="../static/imagens/cadastrar.png" width="80" alt=""><br>
+    <div class="shadow text-black p-1 m-auto border-orange w-25">
+    <h3>Formulário de Avaria</h3>
+    <img class="procurarimg" src="../static/imagens/cadastrar.png" width="60" alt="">
     <form action="/avarias/cadastro" method="post">
-        <label for="data_de_insercao">Data:</label><br>
-        <input type="date" id="data_de_insercao" name="data_de_insercao"  required><br><br>
+        <div class="mb-3"><label for="data_de_insercao">Data:</label>
+            <input class="form-control text-center w-50 m-auto" type="date" id="data_de_insercao" name="data_de_insercao"  required></div>
 
-        <label for="codigo_produto">Código do Produto:</label><br>
-        <input type="number" id="codigo_produto" name="codigo_produto" value="{{ produto.codigo_do_produto }}" readonly required><br><br>
+        <div class="mb-3"><label for="codigo_produto">Código do Produto:</label>
+            <input class="form-control text-center w-50 m-auto" type="number" id="codigo_produto" name="codigo_produto" value="{{ produto.codigo_do_produto }}" readonly required></div>
 
-        <label for="nome_produto">Nome do Produto:</label><br>
-        <input type="text" id="nome_produto" name="nome_produto" minlength="600" value="{{ produto.nome_do_produto }}" readonly required ><br><br>
+        <div class="mb-3"><label for="nome_produto">Nome do Produto:</label>
+            <input class="form-control text-center w-50 m-auto" type="text" id="nome_produto" name="nome_produto" minlength="600" value="{{ produto.nome_do_produto }}" readonly required ></div>
 
-        <label for="preco_produto">Preço de custo (R$): </label><br>
-        <input type="text" id="preco_produto" name="preco_produto" value="{{produto.preco_do_produto}}" required readonly><br><br>
+       <div class="mb-3"><label for="preco_produto">Preço de custo (R$): </label>
+           <input class="form-control text-center w-50 m-auto" type="text" id="preco_produto" name="preco_produto" value="{{produto.preco_do_produto}}" required readonly></div>
 
-        <label for="quantidade">Quantidade: </label><br>
-        <input type="number" id="quantidade" name="quantidade" step="0.001" min="0" value="0" required><br><br>
+        <div class="mb-3"><label for="quantidade">Quantidade: </label><br>
+            <input class="form-control text-center w-50 m-auto" type="number" id="quantidade" name="quantidade" step="0.001" min="0" value="0" required></div>
 
-        <label>Tipo de Avaria: </label>
-            <select name="tipodeavaria" id="tipodeavaria">
+        <div class="mb-3"><label>Tipo de Avaria: </label>
+            <select class="form-select text-center w-50 m-auto" name="tipodeavaria" id="tipodeavaria">
             <option>Embalagem</option>
              <option>Estragado</option>
             <option>Vencido</option>
-            </select><br><br>
+            </select></div>
 
-        <label>Uso e consumo?: </label>
-            <select name="usoeconsumo" id="usoeconsumo">
+        <div class="mb-3"><label>Uso e consumo?:</label>
+            <select class="form-select text-center w-50 m-auto" name="usoeconsumo" id="usoeconsumo">
             <option>Não</option>
                 <option>Sim</option>
-            </select><br><br>
+            </select></div>
 
-        <input type="submit" value="Enviar">
+        <input class="btn btn-warning" type="submit" value="Cadastrar">
     </form>
 </div>
 {% endblock %}

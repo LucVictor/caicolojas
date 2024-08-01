@@ -1,16 +1,17 @@
 {% extends "./template.html" %}
 {% block content %}
-    <div class="procurarproduto">
-    <h2>Procurar produto</h2>
-    <img class="procurarimg" src="../static/imagens/procurar.png" width="80" alt=""><br>
-    <form action="/avarias/cadastrar" method="post">
-        <label for="codigo">Código:</label><br>
-        <input type="text" id="codigo" name="codigo"><br><br>
 
-        <label for="codigo_barras">Código de Barras:</label><br>
-        <input type="text" id="codigo_barras" name="codigo_barras"><br><br>
+    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
+    <h3>Procurar produto</h3>
+    <div class="m-2"><img class="procurarimg" src="../static/imagens/procurar.png" width="60" alt=""></div>
+    <form class="w-50 m-auto" action="/avarias/cadastrar" method="post">
+        <label class="m-2" for="codigo">Código:</label>
+        <input class="form-control text-center" type="text" id="codigo" name="codigo">
 
-        <input type="submit" value="Buscar">
+        <label class="m-2" for="codigo_barras">Código de Barras:</label>
+        <input class="form-control text-center" type="text" id="codigo_barras" name="codigo_barras">
+
+        <input class="btn btn-warning m-2" type="submit" value="Buscar">
     </form>
     </div>
 

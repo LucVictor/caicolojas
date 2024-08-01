@@ -1,26 +1,15 @@
 {% extends "template.html" %}
 {% block content %}
-<style>
-    h3{
-        text-align: center  ;
-    }
-    .resumoavarias{
-        margin-left: 30px;
-    }
-    footer{
-        margin-top: 50px;
-    }
-</style>
-<div>
-<div class="resumo">
+<div class="d-flex justify-content-center m-1 p-1 text-center">
 
-<div class="resumoavarias">
+<div class="border-orange mb-auto mt-2 p-2 shadow align-self-center justify-content-center align-items-center">
 
+    <div>
     <h3>Produtos Próximos ao Vencimento</h3>
-    <table class="dez_itens">
+    <table class="table-bordered table-sm text-center align-middle border-black">
         <tr>
             <th>Produto</th>
-            <th>Quant</th>
+            <th>Quantidade</th>
             <th>Vencimento</th>
         </tr>
         {% for i in dez_vencimentos %}
@@ -31,13 +20,14 @@
         </tr>
         {% endfor %}
     </table>
+    </div>
 </div>
 
-<div class="resumoavarias">
+<div class="border-orange m-2 p-2 shadow  align-self-center justify-content-center align-items-center">
 <h3>Gráfico de custos</h3>
 <canvas id="myChart2"></canvas>
     <h3>Últimas avarias</h3>
-    <table class="dez_itens">
+    <table class="table-bordered shadow-sm table-sm text-center align-middle border-black">
         <tr>
             <th>Código</th>
             <th>Custo</th>
@@ -50,6 +40,8 @@
         {% endfor %}
     </table>
 </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -64,7 +56,8 @@
       datasets: [{
         label: 'R$',
         data: {{ total_values | tojson }},
-        borderWidth: 1
+        borderWidth: 1,
+          backgroundColor: "orange"
       }]
     },
     options: {
@@ -83,12 +76,15 @@ new Chart(ctx2, {
       datasets: [{
         label: 'R$',
         data: {{ total_values | tojson }},
-        borderWidth: 1
+        borderWidth: 1,
+          backgroundColor: "orange", borderColor: "orange"
+
       }]
     },
     options: {
       scales: {
         y: {
+
           beginAtZero: true
         }
       }

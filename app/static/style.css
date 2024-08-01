@@ -1,281 +1,70 @@
-html{
-        background: rgba(255, 165, 0, 0.16);
-        font-family: 'Poppins', sans-serif;
+.background-suave{
+
 }
-footer{
-    text-align: center;
-    padding: 5px;
-    margin-top: 10px;
-    justify-content: center;
-    align-content: center;
+body {
+  height: 100%
+}
+.flexNoBoards{
     display: flex;
-
+    border: none;
 }
-.menu{
+flexNoBoardErros{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 2px;
-    padding-left: 10px;
-    font-size: 16px;
+    border-left: 1px;
+}
+.fs-12{
+    font-size: 14px;
 
 }
-.iconegithub{
-         mix-blend-mode: multiply;
-}
-.logo{
-    padding-top: 4px;
-     mix-blend-mode: multiply;
-}
-.procurarimg{
-     mix-blend-mode: multiply;
-}
-.botoesmenu{
-    display: inline-flex;
-    font-size: small;
-
+.btn-custom-orange {
+    background-color: orange; /* Cor laranja */
+    color: black; /* Cor do texto */
+    border: none; /* Remover bordas se necessário */
 }
 
-.botaoavarias {
-    cursor: pointer;
-    border-radius: 2px;
-    position: relative;
-    width: 100px;
-    background-color: orange;
-    text-align: center;
-    margin-left: 8px;
-        margin-right: 5px;
+.btn-custom-orange:hover, .btn-custom-orange:focus, .btn-custom-orange:active, .btn-custom-orange:target  {
+    background-color: #e64a19; /* Cor laranja escura para o efeito hover */
+    color: black;
 }
-
-.botaovecimentos{
-    cursor: pointer;
-    border-radius: 2px;
-    position: relative;
-    display: inline-block;
-    width: 150px;
-    background-color: orange;
-    text-align: center;
-    margin-left: 8px;
-    margin-right: 5px;
+.dropdown-menu {
+    min-width: auto; /* Allow width to fit content */
+    text-align: left;
+    color: black;
+}
+.border-orange{
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: orange;
 
 }
-
-.botaoavariasconteudo{
-    cursor: pointer;
-    margin-top: 1px;
-    visibility: hidden;
-    position: absolute;
-    background-color: orange;
-    align-content: center;
-    justify-content: center;
-    width: 100px;
-    border-radius: 2px;
-     z-index: 1000;
+.navbar-brand, .procurarimg, .caminhao, .logo{
+    mix-blend-mode:multiply;
 }
-.linkbotoes {
-    width: 100%;
-    display:inline-block;
+.dropdown-menu{
+    font-size: 14px;
+    background-color: orange; /* Cor laranja */
+    color: rgb(0, 0, 0); /* Cor do texto */
+    border: none; /* Remover bordas se necessário */
 }
-
-.botaovecimentosconteudo{
-    margin-top: 1px;
-    visibility: hidden;
-    position: absolute;
-    background-color: orange;
-    align-content: center;
-    justify-content: center;
-    border-radius: 2px;
-    z-index: 1000;
-    width: 150px;
-
+.dropdown-item:hover, .dropdown-item:target, .dropdown-item:active, .dropdown-item:focus{
+    background-color: #e64a19;
+ color: black;
 }
-.linkbotoes:hover{
-    background-color: orangered;
-
+textarea {
+   resize: none;
 }
-.botaoavarias:hover {
- transform: scale(1.05);
+.dropdown-item{
+    color: black;
+}
+.tabela, .tabela tr, .tabela th, .tabela td{
+    border: black 1px solid;
 }
 
-.botaovecimentos:hover {
- transform: scale(1.05);
-}
-
-.botaoavarias:hover .botaoavariasconteudo {
-    visibility: visible;
-}
-
-.botaovecimentos:hover .botaovecimentosconteudo {
-    visibility: visible;
-}
-
-.botaoavarias .botaoavariasconteudo:not(:hover),
-.botaovecimentos .botaovecimentosconteudo:not(:hover) {
-      transition-delay: 0.1s;
-}
-
-
-.conteudo{
-  margin: auto;
-  width: fit-content;
-    text-align: center;
-    align-content: center;
-  padding: 10px;
-}
-
-table, th, td{
-    padding: 5px 5px;
-    border: 1px solid;
-}
-.acoes{
-    justify-content: center;
-    align-items: center;
-}
-.acoes form {
-    margin: 0;
-}
-input[type="submit"] {
-    width: fit-content;
-    border-style: unset;
-    border-radius: 2px;
-    background-color: orange;}
-
-.vermelho{
-    background-color: rgb(251, 73, 73);
-}
-
-.amarelo{
-    background-color: #ffff4c;
-}
-
-.verde{
-    background-color: #4cff4c;
-}
-input[type="submit"]:hover{
-     transform: scale(1.05);
-}
-
-form {
-    text-align: center;
-}
-
-input{
-    text-align: center;
-    width: fit-content;
-}
-
-a{
-    background: none;
-    cursor: pointer;
-    color: inherit;
-    text-decoration: none;
-}
-
-#filial{
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-}
-
-.procurarproduto{
-    border: solid #ffcc77 3px;
-    border-radius: 5px;
-    padding: 10px 10px 10px 10px;
-    background-color: #ffcc77;
-}
-.cadastrar_produto{
-    border: solid #ffcc77 3px;
-    border-radius: 5px;
-    padding: 10px 10px 10px 10px;
-    background-color: #ffcc77;
-}
-
-.resumoavarias{
-        border: solid 1px;
-        width: fit-content;
-    padding: 5px 5px 5px 5px;
-    border-radius: 5px;
-    margin: auto;
-    text-align: justify;
-        margin-top: 0;
-
-}
-.tabelaavarias{
-    padding: 10px;
-    font-size: small;
-}
-.resumo{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-}
-.dez_itens{
-    border: 0px #ffcc77 solid;
-    text-align: center;
-    margin: auto;
-}
 @media print {
-  /* All your print styles go here */
-  .botaovecimentos,
-  .botaoavarias,
-  .logo,
   .menu,
-  .botoesmenu,
-  footer,
-  header,
-  title,
-  menu,
-  .botoesacao{
-    display: none;
-  }
-    .resumoentregas{
-    font-size: 15px;
-}
-.conteudo{
-    top:0;
-    padding: 0;
-}
-.resumoavarias{
-    margin-left: 5px;
-}
-
-@page {
-    size: auto;   /* auto is the initial value */
-    margin: 10px;  /* this affects the margin in the printer settings */
-}
-
-
-  }
-
-
-.resumoavarias{
-    margin-left: 5px;
-}
-select{
-    text-align: center;
-}
-.resumoentregas{
-    text-align: center;
-    margin: 0 0 auto 15px;
-    font-size: 15px;
-    border: solid 1px;
-    width: fit-content;
-    padding: 5px 5px 5px 5px;
-    border-radius: 5px;
-}
-.resumoerros{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 0 0 auto 15px;
-    padding: 15px 15px 15px 15px;
-    font-size: 15px;
-    border: solid 1px;
-    width: fit-content;
-    border-radius: 5px;
-}
-.tabelaerros{
-    margin: auto;
-}
+  .banner, footer, .navbar, .botoesacao { display: none; }
+    .resumo{
+        page-break-after: always;
+    }
+ }

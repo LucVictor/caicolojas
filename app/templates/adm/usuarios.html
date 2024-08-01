@@ -1,19 +1,10 @@
 {% extends "./template.html" %}
 {% block content %}
-    <style>
-    .listagemfuncionarios{
-        margin: auto;
-        align-items: center;
-        justify-content: center;
+    <div class="d-flex justify-content-center m-1 p-1 text-center">
 
-    }
-
-    </style>
-    <div class="listagemfuncionarios">
-
-    <div>
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
         <h1>Listagem de usuários</h1>
-    <table class="listagemfuncionarios">
+    <table class="table-bordered m-auto text-center align-middle border-black">
     <tr>
         <th>Nome:</th>
         <th>Loja:</th>
@@ -26,7 +17,7 @@
         <td>{{ i.filial }}</td>
         <td>{{ i.acesso }}</td>
         <td class="botoesacao"><form action="/adm/deletar_funcionario/{{ i.id }}" method="post">
-    <input type="submit" value="Apagar"></form></td>
+    <input class="btn btn-sm btn-warning m-2" type="submit" value="Apagar"></form></td>
 
     </tr>
         {% endfor %}

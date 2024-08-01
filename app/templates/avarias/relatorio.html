@@ -1,18 +1,18 @@
 {% extends "./template.html" %}
 {% block content %}
-    <div class="cadastrar_produto">
+    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
     <h2>Emitir Relatório</h2>
-    <form action="/avarias/relatorio" method="post">
-        <label for="codigo_produto">Código do Produto</label><br>
-        <input type="text" id="codigo_produto" name="codigo_produto"><br><br>
+    <form class="m-2 w-50 m-auto" action="/avarias/relatorio" method="post">
+        <label class="m-2" for="codigo_produto">Código do Produto:</label><br>
+        <input class="form-control text-center" type="text" id="codigo_produto" name="codigo_produto">
 
-        <label for="data_inicial">Data inicial:</label><br>
-        <input type="date" id="data_inicial" name="data_inicial" required><br><br>
+        <label class="m-2" for="data_inicial">Data inicial:</label><br>
+        <input  class="form-control text-center" type="date" id="data_inicial" name="data_inicial" required>
 
-        <label for="data_final">Data final</label><br>
-        <input type="date" id="data_final" name="data_final" required><br><br>
+        <label class="m-2" for="data_final">Data final:</label><br>
+        <input class="form-control text-center" type="date" id="data_final" name="data_final" required>
 
-        <input type="submit" value="Emitir">
+        <input class="btn btn-warning m-2" type="submit" value="Emitir">
     </form>
         </div>
 {% endblock %}

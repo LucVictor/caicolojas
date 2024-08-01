@@ -42,7 +42,9 @@
                 {% if current_user.is_authenticated %}
                 <ul class="dropdown-menu">
                 {% else %}
+
                     <ul class="dropdown-menu dropdown-menu-end">
+                        {% endif %}
                 <li><a class="dropdown-item" href="/vencimentos/">Visualizar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/procurar">Cadastrar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/analisarvolume">Analisar</a></li>

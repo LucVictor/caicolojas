@@ -39,46 +39,18 @@
                 Vencimentos
                 </a>
 
+                {% if current_user.is_authenticated %}
                 <ul class="dropdown-menu">
+                {% else %}
+                    <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="/vencimentos/">Visualizar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/procurar">Cadastrar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/analisarvolume">Analisar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/cadastrar_volume">Cadastrar Volume</a></li>
               </ul>
             </div>{% if current_user.is_authenticated %}
-            {% if current_user.acesso > 1 %}
-            <div class="dropdown me-2 ">
-                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Logística
-                </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/entregas/">Entregas</a></li>
-                <li><a class="dropdown-item" href="/entregas/cadastrar">Cadastrar entrega</a></li>
-                <li><a class="dropdown-item" href="/entregas/relatorio">Relatório</a></li>
-                <li><a class="dropdown-item" href="/entregas/comparar_entregas">Comparar</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/entregas/erros">Erros</a></li>
-                <li><a class="dropdown-item" href="/entregas/cadastrar_erro">Cadastrar Erro</a></li>
-                <li><a class="dropdown-item" href="/entregas/erros_relatorio">Relatório</a></li>
-                <li><a class="dropdown-item" href="/entregas/comparar_erros">Comparar</a></li>
-              </ul>
-            </div>
-
-            <div class="dropdown me-2">
-                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Vendas
-                </a>
-
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/vendas/erros">Erros</a></li>
-                <li><a class="dropdown-item" href="/vendas/cadastrar_erro">Cadastrar erro</a></li>
-                <li><a class="dropdown-item" href="/vendas/erros_relatorio">Relatório</a></li>
-                    <li><a class="dropdown-item" href="/vendas/comparar_erros">Comparar</a></li>
-              </ul>
-            </div>
-            {% endif %}
             <div class="dropdown ">
-                <a class="btn  btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{  current_user.username.upper() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end fs-12">

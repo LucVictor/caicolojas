@@ -67,7 +67,7 @@ class Users(UserMixin, db.Model):
     username = db.Column(db.String(250), unique=True, nullable=False)
     password = db.Column(db.String(250), nullable=False)
     filial = db.Column(db.String(250), nullable=True)
-    acesso = db.Column(db.String(250), nullable=False)
+    acesso = db.Column(db.Integer, nullable=False)
 
 
 class Volume_de_Vendas(db.Model):

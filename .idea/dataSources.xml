@@ -59,5 +59,12 @@
       <jdbc-url>jdbc:mariadb://177.54.147.142:3306/lucascod_caico</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@caicodb-db.lucascoding.com.br" uuid="b360c518-e816-4f44-9a32-0c06e55dcbec">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://caicodb-db.lucascoding.com.br:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
